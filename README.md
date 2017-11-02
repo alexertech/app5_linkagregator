@@ -1,24 +1,33 @@
-# README
+# Jobs Board
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Goal
 
-Things you may want to cover:
+- CRUD for jobs and users
+- A user can login / logout
+- A user can be of type hunter or seeker
+- Only a hunter user can create / edit jobs offers
+- Only a seeker can apply and send data for a job offer
+- Non registered users only can see the job listing.
 
-* Ruby version
+## Model
 
-* System dependencies
+**User**
+```
+name:string
+email:string
+password:string
+type:int (1 hunter, 2 seeker)
+```
 
-* Configuration
+**Jobs**
+```
+name:string
+summary:string
+user:references
+```
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+**Applications**
+```
+jobs:references
+user:references
+```

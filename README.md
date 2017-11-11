@@ -16,7 +16,7 @@
 name:string
 email:string
 password:string
-usertype:int (1 hunter, 2 seeker)
+usertype:int (0 admin, 1 hunter, 2 seeker)
 ```
 
 **Jobs**
@@ -41,8 +41,8 @@ The user type will define the views of the application.
 
 # Next Steps
 
-* Setup the users sessions (with the authenticate at the model)
+* Better navigation menu for public / registered / admin users
 
-* Finish the registration form, if there is an user logged in, depending on the type (admin/others) the create controller should return to the user listing or to the root_path.
+* Comment the code of the whole auth system
 
-* Close the Users interface for the admin type, and allow to a normal user only access the edit option (profile?)
+* Allow to a normal user only access the edit option (profile?)

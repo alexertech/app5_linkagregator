@@ -12,7 +12,15 @@
 
 <p>
   <strong>Type:</strong>
-  <%= @user.usertype == 1 ? 'Hunter' : 'Seeker' %>
+  <%= case @user.usertype
+     when 1 
+      'Hunter'
+    when 2
+      'Seeker'
+    when 0
+       'Admin'
+    end  
+  %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

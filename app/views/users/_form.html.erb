@@ -25,15 +25,13 @@
 
   <div class="field">
     <%= @user.persisted? ? 'Change password' : 'Password' %><br>
-    
-    <%= form.password_field :oldpassword, placeholder: 'Current Password' if @user.persisted? %>
     <%= form.password_field :password, placeholder: 'Password'%>
     <%= form.password_field :password_confirmation, placeholder: 'Confirm Password'%>
   </div>
 
   <div class="field">
     <%= form.label :usertype %>
-    <%= form.select :usertype, options_for_select([["Hunter", 1], ["Seeker", 0]]) %>
+    <%= form.select :usertype, options_for_select([["Admin", 0],["Hunter", 1], ["Seeker", 2]]) %>
   </div>
 
   <div class="actions">

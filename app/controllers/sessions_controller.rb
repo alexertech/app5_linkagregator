@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
   # Create a new session using the authenticate from our model
   def create
 
+    # Check the user existence and password
     user =  User.authenticate(params[:email], params[:password])
     
     if user
@@ -24,6 +25,7 @@ class SessionsController < ApplicationController
 
   end
 
+  # Close the session 
   def destroy
     session[:user_id] = nil
     flash[:notice] = "You've been logged out successfully."

@@ -65,3 +65,4 @@ The user type will define the views of the application.
 
 * The profile edit / show options should be separated from the user controller
  
+* 

@@ -1,14 +1,10 @@
-<div class="menu">
+<%=link_to "Home", root_path %> | 
 
-     <%=link_to "Home", root_path %> | 
-   
-    <% if current_user %>
-        <%=link_to "Logout", logout_path %> |
-    <% else %>
-        <%= link_to "Register", register_path %> | 
-        <%=link_to "Login", login_path %> |
-    <% end %>
-    
-    <%=link_to "Admin", users_path %>
+<% if current_user %>
+    <%=link_to "Logout", logout_path %> |
+<% else %>
+    <%= link_to "Register", register_path %> | 
+    <%=link_to "Login", login_path %> |
+<% end %>
 
-</div>
+<%=link_to "Admin", users_path %>

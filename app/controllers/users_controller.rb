@@ -28,47 +28,47 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
+
+    # Create a new user
     @user = User.new(user_params)
 
+    # Encrypt the password
     @user.pass_salt = BCrypt::Engine.generate_salt
     @user.pass_hash = BCrypt::Engine.hash_secret(@user.password, @user.pass_salt)
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    # Each user has a unique salt
+    if @user.save
+      redirect_to @user, notice: 'User was successfully created.'
+      render :show, status: :created, location: @user
+    else
+      render :new 
     end
+
   end
 
   # PATCH/PUT /users/1
   def update
 
+      # First receive the user params
       updateparms = user_params
+
+      # Now we add a pass_hash to the params with the new password
       updateparms[:pass_hash] = BCrypt::Engine.hash_secret(updateparms[:password], @user.pass_salt)
 
-      respond_to do |format|
-        if @user.update(updateparms)
-          format.html { redirect_to @user, notice: 'User was successfully updated.' }
-          format.json { render :show, status: :ok, location: @user }
-        else
-          format.html { render :edit }
-          format.json { render json: @user.errors, status: :unprocessable_entity }
-        end
+      # The update method will do the rest of the work
+      if @user.update(updateparms)
+        redirect_to @user, notice: 'User was successfully updated.'
+        render :show, status: :ok, location: @user
+      else
+        render :edit
       end
-   
-  end
+
+    end
 
   # DELETE /users/1
   def destroy
     @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to users_url, notice: 'User was successfully destroyed.' 
   end
 
   private

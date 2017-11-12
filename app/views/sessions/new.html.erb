@@ -1,18 +1,11 @@
+<%=form_tag login_path do%>
 
-<p id="notice"><%= notice %></p>
+  <%=label_tag :email %>
+  <%=text_field_tag :email %>
 
-<div class="login_form">
+  <%=label_tag :password %>
+  <%=password_field_tag :password %>
 
-  <%=form_tag login_path do%>
+  <%=submit_tag "Log in" %>
 
-    <%=label_tag :email %>
-    <%=text_field_tag :email %>
-
-    <%=label_tag :password %>
-    <%=password_field_tag :password %>
-
-    <%=submit_tag "Log in" %>
-
-  <%end%>
-
-</div>
+<%end%>

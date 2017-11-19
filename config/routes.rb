@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  get 'session/new'
 
-  get 'session/destroy'
-
+  get '/profile/show' => "profiles#show", as: :profile
+  get '/profile/edit' => "profiles#edit", as: :profile_edit
+  patch '/profile/edit' => "profiles#update"
+  
   root 'home#index'
 
   resources :users

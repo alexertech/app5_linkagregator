@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Week3Jobsboard</title>
+    <title>User Profiles</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all',
+                                              'data-turbolinks-track': 'reload' %>
   </head>
-
-  <body>
-  
-    <%= render 'shared/nav' %>
-
-    <p id="notice"><%= notice %></p>
+  <body class="bgmain">
     
-    <%= yield %>
+    <div class="container">
 
+      <%= render 'shared/nav' %>
+
+      <p id="notice"><%= notice %></p>
+
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <%= yield %>
+        </div> 
+        <div class="col-md-2"></div>
+      </div>
+
+    </div>
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   </body>
 </html>
